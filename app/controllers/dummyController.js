@@ -12,7 +12,9 @@ const dummies = [
 const readDummys = asyncHandler(async (req, res) => {
 
     // res.status(200).json(dummies)
-    res.render('index');
+    // res.render('index');
+    const rows = dummies
+    res.render('home', { rows });
 })
 
 // @desc    Create dummies
