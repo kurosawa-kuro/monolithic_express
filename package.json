@@ -1,0 +1,44 @@
+{
+  "name": "monolithic_express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kurosawa-kuro/monolithic_express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kurosawa-kuro/monolithic_express/issues"
+  },
+  "homepage": "https://github.com/kurosawa-kuro/monolithic_express#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^7.5.0",
+    "express-list-endpoints": "^6.0.0",
+    "jest": "^29.1.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20",
+    "sequelize-cli": "^6.5.1",
+    "supertest": "^6.3.0"
+  },
+  "dependencies": {
+    "axios": "^1.1.2",
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "concurrently": "^7.4.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "express-validator": "^6.14.2",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.25.0",
+    "sqlite3": "^5.1.2"
+  }
+}
