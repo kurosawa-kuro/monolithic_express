@@ -1,58 +1,59 @@
 const asyncHandler = require('express-async-handler')
 
-const samples = [
-    { id: 1, name: 'aaaaaaa', completed: false },
-    { id: 2, name: 'bb', completed: false },
-    { id: 3, name: 'ccccccccccc', completed: true }
-]
+const { Sample } = require('../../db/models')
 
-// @desc    Get goals
-// @route   GET /api/goals
-// @access  Private
+// @desc    Get samples
+// @route   GET samples
+// @access  Public
 const readSamples = asyncHandler(async (req, res) => {
-    console.log("hit readGoals")
+    const samples = await Sample.findAll()
+    console.log("sample", JSON.stringify(samples, null, 2))
 
-    res.status(200).json(samples)
+    const data = samples
+    const msg = data.length !== 0 ? "Successfully read Samples" : "Successfully read Samples but empty"
+
+    return res.status(200).json({ isSuccess: true, msg, data })
 })
 
-// @desc    Set goal
-// @route   POST /api/goals
-// @access  Private
+// @desc    Set sample
+// @route   POST samples
+// @access  Public
 const createSample = asyncHandler(async (req, res) => {
-    console.log('hit post samples')
-    const { body } = req
-    console.log({ body })
+    const body = req.body
 
     if (typeof body.name !== 'string') {
         res.statusCode = 422
         throw new Error('name must string');
     }
 
-    const newSample = {
-        id: samples.length + 1,
-        name: body.name,
-        completed: false
-    }
+    const sample = await Sample.create(req.body)
+    // console.log("sample", JSON.stringify(sample, null, 2))
 
-    samples.push(newSample)
+    const data = sample
+    const msg = "Successfully created Sample"
 
-    res.status(201).json(newSample);
+    return res.status(201).json({ isSuccess: true, msg, data })
 })
 
 
 // @desc    Read sample
-// @route   DELETE /api/goals/:id
-// @access  Private
+// @route   DELETE samples/:id
+// @access  Public
 const readSample = asyncHandler(async (req, res) => {
     const id = req.params.id
-    const foundSample = samples.find((sample) => sample.id === Number(id))
+
+    const foundSample = await Sample.findByPk(id)
+    // console.log("foundSample", JSON.stringify(foundSample, null, 2))
 
     if (!foundSample) {
         res.statusCode = 404
         throw new Error('sample not found');
     }
 
-    res.status(200).json(foundSample);
+    const data = foundSample
+    const msg = data.length !== 0 ? "Successfully read Sample" : "Successfully read Sample but empty"
+
+    return res.status(200).json({ isSuccess: true, msg, data })
 })
 
 module.exports = {

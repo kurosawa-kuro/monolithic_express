@@ -1,5 +1,4 @@
 const express = require('express')
-const asyncHandler = require('express-async-handler')
 const morgan = require("morgan");
 
 const { errorHandler } = require('./middleware/errorMiddleware');
@@ -10,6 +9,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use('/dummies', require('./routes/dummyRoutes.js'));
 app.use('/samples', require('./routes/sampleRoutes'));
 
 
