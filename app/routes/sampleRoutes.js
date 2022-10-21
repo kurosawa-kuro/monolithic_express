@@ -1,16 +1,16 @@
 const express = require('express')
 const router = express.Router()
 
-const SampleController = require('../controllers/sampleController.js')
+const sampleController = require('../controllers/sampleController.js')
 
-router.get('/new', SampleController.newSample)
-router.delete('/:id', SampleController.deleteSample)
-router.post('/', SampleController.createSample)
-router.get('/', SampleController.indexSamples)
-router.get('/:id', SampleController.showSample)
-router.get('/edit/:id', SampleController.editSample)
-router.put('/:id', SampleController.updateSample)
+router.get('/new', sampleController.newSample)
+router.delete('/:id', sampleController.deleteSample)
+router.post('/', sampleController.createSample)
+router.get('/', sampleController.indexSamples)
+router.get('/:id', sampleController.showSample)
+router.get('/edit/:id', sampleController.editSample)
+router.put('/:id', sampleController.updateSample)
 
-router.get('/search/:keyword', SampleController.searchSamples)
+router.get('/search/:keyword', sampleController.searchSamples)
 
 module.exports = router
