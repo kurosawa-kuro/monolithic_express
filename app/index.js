@@ -14,8 +14,10 @@ app.use(express.static(publicDir));
 
 const handlebars = exphbs.create({ extname: '.hbs', });
 app.engine('.hbs', handlebars.engine);
-app.set('view engine', '.hbs');
 app.set("views", appRoot.resolve("app/views"));
+
+// app.set('view engine', '.hbs');
+app.set("view engine", "ejs");
 
 
 app.use(morgan('dev'));
