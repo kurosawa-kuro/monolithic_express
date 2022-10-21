@@ -10,7 +10,6 @@ const { Sample } = require("../../db/models/")
 // @route   GET /new
 // @access  Public
 const newAction = asyncHandler(async (req, res) => {
-    rows = []
     res.render('samples/new');
 })
 
@@ -32,7 +31,7 @@ const createAction = asyncHandler(async (req, res) => {
     res.redirect(req.baseUrl + '/');
 })
 
-// @desc    Read Samples
+// @desc    Index Samples
 // @route   GET /samples
 // @access  Public
 const indexAction = asyncHandler(async (req, res) => {
@@ -43,7 +42,7 @@ const indexAction = asyncHandler(async (req, res) => {
     res.render('samples/index', { rows });
 })
 
-// @desc    Read sample
+// @desc    Show sample
 // @route   GET /samples/:id
 // @access  Public
 const showAction = asyncHandler(async (req, res) => {

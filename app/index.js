@@ -9,7 +9,8 @@ const { errorHandler } = require('./middleware/errorMiddleware');
 
 const app = express()
 
-const publicDir = path.join(__dirname, "../public")
+const publicDir = path.join(__dirname, "./public")
+console.log({ publicDir })
 app.use(express.static(publicDir));
 
 // view engine
