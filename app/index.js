@@ -11,13 +11,16 @@ const app = express()
 const publicDir = path.join(__dirname, "../public")
 app.use(express.static(publicDir));
 
-
-const handlebars = exphbs.create({ extname: '.hbs', });
-app.engine('.hbs', handlebars.engine);
+// view engine
 app.set("views", appRoot.resolve("app/views"));
 
-// app.set('view engine', '.hbs');
-app.set("view engine", "ejs");
+// handlebars
+const handlebars = exphbs.create({ extname: '.hbs', });
+app.engine('.hbs', handlebars.engine);
+app.set('view engine', '.hbs');
+
+// ejs
+// app.set("view engine", "ejs");
 
 
 app.use(morgan('dev'));
@@ -27,7 +30,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/dummies', require('./routes/dummyRoutes.js'));
 app.use('/samples', require('./routes/sampleRoutes'));
 
-app.get('/', (req, res) => res.render('index'));
 
 
 

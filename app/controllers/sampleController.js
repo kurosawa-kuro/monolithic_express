@@ -26,6 +26,7 @@ const createSample = asyncHandler(async (req, res) => {
 // @route   GET /samples
 // @access  Public
 const readSamples = asyncHandler(async (req, res) => {
+    console.log("readSamples")
     const samples = await Sample.findAll({ raw: true })
     const rows = samples
 
