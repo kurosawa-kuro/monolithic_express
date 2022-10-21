@@ -9,7 +9,7 @@ const { Sample } = require("../../db/models/")
 // @desc    Display Create Form
 // @route   GET /new
 // @access  Public
-const newSample = asyncHandler(async (req, res) => {
+const newAction = asyncHandler(async (req, res) => {
     rows = []
     res.render('samples/new');
 })
@@ -17,7 +17,7 @@ const newSample = asyncHandler(async (req, res) => {
 // @desc    Create Sample
 // @route   POST /samples
 // @access  Public
-const createSample = asyncHandler(async (req, res) => {
+const createAction = asyncHandler(async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
@@ -35,7 +35,7 @@ const createSample = asyncHandler(async (req, res) => {
 // @desc    Read Samples
 // @route   GET /samples
 // @access  Public
-const indexSamples = asyncHandler(async (req, res) => {
+const indexAction = asyncHandler(async (req, res) => {
     console.log("readSamples")
     const samples = await Sample.findAll({ raw: true })
     const rows = samples
@@ -46,7 +46,7 @@ const indexSamples = asyncHandler(async (req, res) => {
 // @desc    Read sample
 // @route   GET /samples/:id
 // @access  Public
-const showSample = asyncHandler(async (req, res) => {
+const showAction = asyncHandler(async (req, res) => {
     console.log("hit readSample")
     const sample = await Sample.findByPk(req.params.id, { raw: true })
     // console.log("JSON.stringify(sample, null, 2)", JSON.stringify(sample, null, 2))
@@ -63,7 +63,7 @@ const showSample = asyncHandler(async (req, res) => {
 // @desc    Display Edit Form
 // @route   GET /edit
 // @access  Public
-const editSample = asyncHandler(async (req, res) => {
+const editAction = asyncHandler(async (req, res) => {
     const id = req.params.id
 
     const foundSampleWithId = await Sample.findByPk(id, { raw: true });
@@ -76,8 +76,8 @@ const editSample = asyncHandler(async (req, res) => {
 // @desc    Update sample
 // @route   PUT /api/samples/:id
 // @access  Public
-const updateSample = asyncHandler(async (req, res) => {
-    console.log("hit updateSample")
+const updateAction = asyncHandler(async (req, res) => {
+    console.log("hit updateAction")
     const id = req.params.id
     console.log("req.body", req.body)
 
@@ -106,8 +106,8 @@ const updateSample = asyncHandler(async (req, res) => {
 // @desc    Delete sample
 // @route   DELETE samples/:id
 // @access  Public
-const deleteSample = asyncHandler(async (req, res) => {
-    console.log("hit deleteSample")
+const deleteAction = asyncHandler(async (req, res) => {
+    console.log("hit deleteAction")
     const id = req.params.id
 
     const foundSampleWithId = await Sample.findByPk(id);
@@ -154,12 +154,12 @@ const searchSamples = asyncHandler(async (req, res) => {
 
 
 module.exports = {
-    newSample,
-    createSample,
-    indexSamples,
-    showSample,
+    newAction,
+    createAction,
+    indexAction,
+    showAction,
     searchSamples,
-    editSample,
-    updateSample,
-    deleteSample
+    editAction,
+    updateAction,
+    deleteAction
 }

@@ -4,18 +4,19 @@ const router = express.Router()
 const sampleController = require('../controllers/sampleController.js')
 
 // C
-router.get('/new', sampleController.newSample)
-router.post('/', sampleController.createSample)
+router.get('/new', sampleController.newAction)
+router.post('/', sampleController.createAction)
 
 // R
-router.get('/', sampleController.indexSamples)
-router.get('/:id', sampleController.showSample)
+router.get('/', sampleController.indexAction)
+router.get('/:id', sampleController.showAction)
+
 // U
-router.get('/edit/:id', sampleController.editSample)
-router.put('/:id', sampleController.updateSample)
+router.get('/edit/:id', sampleController.editAction)
+router.put('/:id', sampleController.updateAction)
 
 // D
-router.delete('/:id', sampleController.deleteSample)
+router.delete('/:id', sampleController.deleteAction)
 
 
 

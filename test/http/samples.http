@@ -2,7 +2,7 @@
 # https://qiita.com/toshi0607/items/c4440d3fbfa72eac840c#rest-client%E3%81%A8%E3%81%AF
 
 ###
-#createSample
+#createAction
 POST http://localhost:5000/samples
 content-type: application/json
 
@@ -25,7 +25,7 @@ GET http://localhost:5000/samples/search?keyword=Doe
 
 
 ###
-#updateSample
+#updateAction
 PUT http://localhost:5000/samples/2
 content-type: application/json
 
@@ -34,6 +34,6 @@ content-type: application/json
 }
 
 ###
-#deleteSample
+#deleteAction
 DELETE  http://localhost:5000/samples/3
 content-type: application/json

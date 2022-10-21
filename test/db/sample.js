@@ -6,18 +6,18 @@ async function startSample() {
     console.log("startSample")
     // console.log({ Sample })
 
-    // createSample()
+    // createAction()
     readSamples()
     // readSample2()
     // readSample()
     // searchSample()
-    // updateSample()
-    // deleteSample()
+    // updateAction()
+    // deleteAction()
     // truncateSamples()
 }
 
-const createSample = async () => {
-    console.log("start createSample")
+const createAction = async () => {
+    console.log("start createAction")
     try {
         // const body = req.body
         const req = {
@@ -105,8 +105,8 @@ const readSample3 = async () => {
     }
 }
 
-const updateSample = async () => {
-    console.log("start updateSample")
+const updateAction = async () => {
+    console.log("start updateAction")
     try {
         // const id = req.params.id
         const id = 2
@@ -141,8 +141,8 @@ const updateSample = async () => {
     }
 }
 
-const deleteSample = async () => {
-    console.log("start deleteSample")
+const deleteAction = async () => {
+    console.log("start deleteAction")
     try {
         // const id = req.params.id
         const id = 1
