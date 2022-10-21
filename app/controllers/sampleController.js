@@ -6,8 +6,8 @@ const { Sample } = require("../../db/models/")
 
 
 
-// @desc    Create Sample
-// @route   POST /samples
+// @desc    Display Create Form
+// @route   GET /new
 // @access  Public
 const newSample = asyncHandler(async (req, res) => {
     rows = []
@@ -25,6 +25,9 @@ const createSample = asyncHandler(async (req, res) => {
 
     const sample = await Sample.create(req.body)
     // console.log("sample", JSON.stringify(sample, null, 2))
+
+    const msg = "Successfully created Sample"
+    const data = sample
 
     res.redirect(req.baseUrl + '/', { alert: msg });
 })
@@ -53,11 +56,26 @@ const readSample = asyncHandler(async (req, res) => {
     return res.status(200).json({ isSuccess: true, msg, data })
 })
 
+// @desc    Display Edit Form
+// @route   GET /edit
+// @access  Public
+const editSample = asyncHandler(async (req, res) => {
+    const id = req.params.id
+
+    const foundSampleWithId = await Sample.findByPk(id, { raw: true });
+    // console.log({ foundSampleWithId })
+    const row = foundSampleWithId
+    console.log({ row })
+    res.render('samples/edit-user', { row });
+})
+
 // @desc    Update sample
 // @route   PUT /api/samples/:id
 // @access  Public
 const updateSample = asyncHandler(async (req, res) => {
+    console.log("hit updateSample")
     const id = req.params.id
+    console.log("req.body", req.body)
 
     const foundSampleWithId = await Sample.findByPk(id);
     // console.log({ foundSampleWithId })
@@ -135,6 +153,7 @@ module.exports = {
     readSamples,
     readSample,
     searchSamples,
+    editSample,
     updateSample,
     deleteSample
 }

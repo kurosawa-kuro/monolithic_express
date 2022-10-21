@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const exphbs = require('express-handlebars');
 const path = require('path');
 const appRoot = require("app-root-path");
+const methodOverride = require("method-override");
 
 const { errorHandler } = require('./middleware/errorMiddleware');
 
@@ -26,6 +27,8 @@ app.set('view engine', '.hbs');
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use(methodOverride("_method"));
 
 app.use('/dummies', require('./routes/dummyRoutes.js'));
 app.use('/samples', require('./routes/sampleRoutes'));
