@@ -18,11 +18,4 @@ router.put('/:id', sampleController.updateAction)
 // D
 router.delete('/:id', sampleController.deleteAction)
 
-
-
-
-
-
-// router.get('/search/:keyword', sampleController.search)
-
 module.exports = router

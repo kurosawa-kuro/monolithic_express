@@ -37,6 +37,7 @@ const createAction = asyncHandler(async (req, res) => {
 const indexAction = asyncHandler(async (req, res) => {
     console.log("readSamples")
     const samples = await Sample.findAll({ raw: true })
+    console.log({ samples })
     const rows = samples
 
     res.render('samples/index', { rows });

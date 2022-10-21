@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Sample.init({
     name: DataTypes.STRING,
+    image: DataTypes.STRING,
     created_at: DataTypes.DATE,
     updated_at: DataTypes.DATE
   }, {
