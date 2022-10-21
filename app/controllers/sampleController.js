@@ -13,14 +13,6 @@ const createSample = asyncHandler(async (req, res) => {
         return res.status(422).json({ errors: errors.array() });
     }
 
-    const foundSampleWithEmail = await Sample.findOne({ where: { email: req.body.email } });
-    // console.log({ foundSampleWithId })
-
-    if (foundSampleWithEmail) {
-        res.statusCode = 404
-        throw new Error('sample already exists');
-    }
-
     const sample = await Sample.create(req.body)
     // console.log("sample", JSON.stringify(sample, null, 2))
 
