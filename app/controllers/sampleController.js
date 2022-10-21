@@ -29,7 +29,7 @@ const createSample = asyncHandler(async (req, res) => {
     const msg = "Successfully created Sample"
     const data = sample
 
-    res.redirect(req.baseUrl + '/', { alert: msg });
+    res.redirect(req.baseUrl + '/');
 })
 
 // @desc    Read Samples
@@ -95,7 +95,8 @@ const updateSample = asyncHandler(async (req, res) => {
     const msg = "Successfully updated Sample"
     const data = foundSampleWithId
 
-    return res.status(201).json({ isSuccess: true, msg, data })
+    // return res.status(201).json({ isSuccess: true, msg, data })
+    res.redirect(req.baseUrl + '/');
 })
 
 // @desc    Delete sample
