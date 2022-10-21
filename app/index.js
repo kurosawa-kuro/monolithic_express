@@ -31,7 +31,9 @@ app.use('/dummies', require('./routes/dummyRoutes.js'));
 app.use('/samples', require('./routes/sampleRoutes'));
 
 
-
+app.get("*", (req, res) => {
+    res.send("<h1>存在しないページ</h1>");
+});
 
 app.use(errorHandler);
 

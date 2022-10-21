@@ -3,6 +3,7 @@ const router = express.Router()
 
 const SampleController = require('../controllers/sampleController.js')
 
+router.get('/new', SampleController.newSample)
 router.post('/', SampleController.createSample)
 router.get('/', SampleController.readSamples)
 router.get('/:id', SampleController.readSample)

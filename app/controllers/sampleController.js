@@ -4,6 +4,16 @@ const { validationResult } = require('express-validator');
 
 const { Sample } = require("../../db/models/")
 
+
+
+// @desc    Create Sample
+// @route   POST /samples
+// @access  Public
+const newSample = asyncHandler(async (req, res) => {
+    rows = []
+    res.render('samples/add-user');
+})
+
 // @desc    Create Sample
 // @route   POST /samples
 // @access  Public
@@ -16,10 +26,7 @@ const createSample = asyncHandler(async (req, res) => {
     const sample = await Sample.create(req.body)
     // console.log("sample", JSON.stringify(sample, null, 2))
 
-    const msg = "Successfully created Sample"
-    const data = sample
-
-    return res.status(201).json({ isSuccess: true, msg, data })
+    res.redirect(req.baseUrl + '/', { alert: msg });
 })
 
 // @desc    Read Samples
@@ -123,6 +130,7 @@ const searchSamples = asyncHandler(async (req, res) => {
 
 
 module.exports = {
+    newSample,
     createSample,
     readSamples,
     readSample,
