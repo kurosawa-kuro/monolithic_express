@@ -10,7 +10,6 @@ const { errorHandler } = require('./middleware/errorMiddleware');
 const app = express()
 
 const publicDir = path.join(__dirname, "./public")
-console.log({ publicDir })
 app.use(express.static(publicDir));
 
 // view engine
@@ -33,6 +32,7 @@ app.use(methodOverride("_method"));
 
 app.use('/dummies', require('./routes/dummyRoutes.js'));
 app.use('/samples', require('./routes/sampleRoutes'));
+app.use('/', require('./routes/topRoutes'));
 
 
 app.get("*", (req, res) => {
