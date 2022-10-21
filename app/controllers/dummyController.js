@@ -11,11 +11,11 @@ const { Sample } = require("../../db/models/")
 // @desc    Read dummies
 // @route   GET dummies
 // @access  Public
-const readDummys = asyncHandler(async (req, res) => {
-    const samples = await Sample.findAll({ raw: true })
-    const rows = samples
+const readDummies = asyncHandler(async (req, res) => {
+    // const samples = await Sample.findAll({ raw: true })
+    const rows = dummies
 
-    res.render('home', { rows });
+    res.render('dummies/index', { rows });
 })
 
 // @desc    Create dummies
@@ -58,6 +58,6 @@ const readDummy = asyncHandler(async (req, res) => {
 
 module.exports = {
     createDummy,
-    readDummys,
+    readDummies,
     readDummy
 }

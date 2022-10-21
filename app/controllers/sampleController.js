@@ -26,13 +26,10 @@ const createSample = asyncHandler(async (req, res) => {
 // @route   GET /samples
 // @access  Public
 const readSamples = asyncHandler(async (req, res) => {
-    const samples = await Sample.findAll()
-    // console.log("samples", JSON.stringify(samples, null, 2))
+    const samples = await Sample.findAll({ raw: true })
+    const rows = samples
 
-    const data = samples
-    const msg = samples.length !== 0 ? "Successfully read Samples" : "Successfully read Samples but empty"
-
-    return res.status(200).json({ isSuccess: true, msg, data })
+    res.render('samples/index', { rows });
 })
 
 // @desc    Read sample
