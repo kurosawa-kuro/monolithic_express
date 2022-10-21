@@ -28,10 +28,17 @@
       <td>{{this.name}}</td>
       <td>{{this.name}}</td>
       <td class="text-end">
-        <a href="/viewuser/{{this.id}}" type="button" class="btn btn-light btn-small"><i class="bi bi-eye"></i> View</a>
-        <a href="/samples/edit/{{this.id}}" type="button" class="btn btn-light btn-small"><i class="bi bi-pencil"></i>
-          Edit</a>
-        <a href="/{{this.id}}" type="button" class="btn btn-light btn-small"><i class="bi bi-person-x"></i> Delete</a>
+        <a href="/samples/{{this.id}}" type="button" class="btn btn-light btn-small"><i class="bi bi-eye"></i> View</a>
+        <a href="/samples/edit/{{this.id}}" type="button" class="btn btn-light btn-small"><i class="bi bi-pencil"></i> Edit</a>
+        {{!-- <a href="/samples/{{this.id}}/?_method=delete" type="button" class="btn btn-light btn-small"><i class="bi bi-person-x"></i> Delete</a> --}}
+        {{!-- <form class="row g-3 needs-validation inline" method="POST" action="/samples/{{row.id}}/?_method=PUT" novalidate>  --}}
+        <form class="d-inline" method="POST" name="form1" action="/samples/{{this.id}}/?_method=DELETE">
+          <input type="hidden" name="user_name" value="名前">
+          
+          <button class="btn btn-light btn-small" type="submit" name="example"><i class="bi bi-pencil"></i>Delete</button>
+        </form>
+       
+
       </td>
     </tr>
     {{/each}}

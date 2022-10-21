@@ -47,13 +47,17 @@ const readSamples = asyncHandler(async (req, res) => {
 // @route   GET /samples/:id
 // @access  Public
 const readSample = asyncHandler(async (req, res) => {
-    const sample = await Sample.findByPk(req.params.id)
+    console.log("hit readSample")
+    const sample = await Sample.findByPk(req.params.id, { raw: true })
     // console.log("JSON.stringify(sample, null, 2)", JSON.stringify(sample, null, 2))
 
     const msg = sample ? "Successfully found Samples" : "Successfully found Samples but empty"
-    const data = sample
+    const row = sample
 
-    return res.status(200).json({ isSuccess: true, msg, data })
+    console.log({ row })
+
+    // return res.status(200).json({ isSuccess: true, msg, data })
+    res.render('samples/view-user', { row });
 })
 
 // @desc    Display Edit Form
@@ -103,6 +107,7 @@ const updateSample = asyncHandler(async (req, res) => {
 // @route   DELETE samples/:id
 // @access  Public
 const deleteSample = asyncHandler(async (req, res) => {
+    console.log("hit deleteSample")
     const id = req.params.id
 
     const foundSampleWithId = await Sample.findByPk(id);
@@ -119,7 +124,7 @@ const deleteSample = asyncHandler(async (req, res) => {
     const msg = "Successfully deleted Sample"
     const data = foundSampleWithId
 
-    return res.status(201).json({ isSuccess: true, msg, data })
+    res.redirect(req.baseUrl + '/');
 })
 
 // @desc    Search samples
