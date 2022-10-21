@@ -11,7 +11,8 @@ const dummies = [
 // @access  Public
 const readDummys = asyncHandler(async (req, res) => {
 
-    res.status(200).json(dummies)
+    // res.status(200).json(dummies)
+    res.render('index');
 })
 
 // @desc    Create dummies
