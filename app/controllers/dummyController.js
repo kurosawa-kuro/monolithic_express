@@ -6,6 +6,8 @@ const dummies = [
     { id: 3, name: 'ccccccccccc', completed: true }
 ]
 
+const { Sample } = require("../../db/models/")
+
 // @desc    Read dummies
 // @route   GET dummies
 // @access  Public
@@ -13,7 +15,11 @@ const readDummys = asyncHandler(async (req, res) => {
 
     // res.status(200).json(dummies)
     // res.render('index');
-    const rows = dummies
+    // const rows = dummies
+
+    const samples = await Sample.findAll()
+    const rows = samples
+
     res.render('home', { rows });
 })
 
