@@ -11,7 +11,7 @@ const { Sample } = require("../../db/models/")
 // @access  Public
 const newSample = asyncHandler(async (req, res) => {
     rows = []
-    res.render('samples/add');
+    res.render('samples/new');
 })
 
 // @desc    Create Sample
@@ -35,7 +35,7 @@ const createSample = asyncHandler(async (req, res) => {
 // @desc    Read Samples
 // @route   GET /samples
 // @access  Public
-const readSamples = asyncHandler(async (req, res) => {
+const indexSamples = asyncHandler(async (req, res) => {
     console.log("readSamples")
     const samples = await Sample.findAll({ raw: true })
     const rows = samples
@@ -46,7 +46,7 @@ const readSamples = asyncHandler(async (req, res) => {
 // @desc    Read sample
 // @route   GET /samples/:id
 // @access  Public
-const readSample = asyncHandler(async (req, res) => {
+const showSample = asyncHandler(async (req, res) => {
     console.log("hit readSample")
     const sample = await Sample.findByPk(req.params.id, { raw: true })
     // console.log("JSON.stringify(sample, null, 2)", JSON.stringify(sample, null, 2))
@@ -156,8 +156,8 @@ const searchSamples = asyncHandler(async (req, res) => {
 module.exports = {
     newSample,
     createSample,
-    readSamples,
-    readSample,
+    indexSamples,
+    showSample,
     searchSamples,
     editSample,
     updateSample,
