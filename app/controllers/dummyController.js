@@ -12,7 +12,7 @@ const { Sample } = require("../../db/models/")
 // @route   GET dummies
 // @access  Public
 const readDummys = asyncHandler(async (req, res) => {
-    const samples = await Sample.findAll()
+    const samples = await Sample.findAll({ raw: true })
     const rows = samples
 
     res.render('home', { rows });
