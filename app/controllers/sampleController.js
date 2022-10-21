@@ -11,7 +11,7 @@ const { Sample } = require("../../db/models/")
 // @access  Public
 const newSample = asyncHandler(async (req, res) => {
     rows = []
-    res.render('samples/add-user');
+    res.render('samples/add');
 })
 
 // @desc    Create Sample
@@ -57,7 +57,7 @@ const readSample = asyncHandler(async (req, res) => {
     console.log({ row })
 
     // return res.status(200).json({ isSuccess: true, msg, data })
-    res.render('samples/view-user', { row });
+    res.render('samples/view', { row });
 })
 
 // @desc    Display Edit Form
@@ -70,7 +70,7 @@ const editSample = asyncHandler(async (req, res) => {
     // console.log({ foundSampleWithId })
     const row = foundSampleWithId
     console.log({ row })
-    res.render('samples/edit-user', { row });
+    res.render('samples/edit', { row });
 })
 
 // @desc    Update sample
