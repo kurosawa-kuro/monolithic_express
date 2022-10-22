@@ -63,7 +63,7 @@ const readSample = async () => {
         const sample = await Sample.findByPk(1)
         // console.log("sample", JSON.stringify(sample, null, 2))
 
-        const res = await Sample.modelMethod(2)
+        const res = await Sample.checkDuplicatedData(2)
         console.log({ res })
 
         // const data = sample

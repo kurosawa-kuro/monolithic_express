@@ -13,11 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
 
-    static async modelMethod(id) {
-      // define association here
-      console.log("modelMethod")
-      console.log("this", this)
-      return this.findByPk(id)
+    static async checkDuplicatedData(name) {
+      const data = await this.findAll({ raw: true, where: { name } })
+
+      return data.length == 0 ? true : false
     }
 
     async aaa(id) {
