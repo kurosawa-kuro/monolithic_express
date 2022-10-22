@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon app/server.js",
+    "initDB": "cd db && sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
     "express-handlebars": "^6.0.6",
+    "express-paginate": "^1.0.2",
     "express-validator": "^6.14.2",
     "hbs": "^4.2.0",
     "http-errors": "^2.0.0",

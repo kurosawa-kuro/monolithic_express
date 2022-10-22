@@ -1,6 +1,7 @@
 const { Op } = require("sequelize");
 const asyncHandler = require('express-async-handler')
 const { validationResult } = require('express-validator');
+const paginate = require('express-paginate');
 
 const { Sample } = require("../../db/models/")
 
@@ -36,11 +37,20 @@ const createAction = asyncHandler(async (req, res) => {
 // @access  Public
 const indexAction = asyncHandler(async (req, res) => {
     console.log("readSamples")
-    const samples = await Sample.findAll({ raw: true })
-    console.log({ samples })
-    const rows = samples
+    const results = await Sample.findAndCountAll({ raw: true, limit: req.query.limit, offset: req.skip })
+    const itemCount = results.count;
+    const pageCount = Math.ceil(results.count / req.query.limit);
 
-    res.render('samples/index', { rows });
+    const resData = {
+        users: results.rows,
+        pageCount,
+        itemCount,
+        pages: paginate.getArrayPages(req)(pageCount, pageCount, req.query.page)
+    }
+
+    console.log("JSON.stringify(resData, null, 2)", JSON.stringify(resData, null, 2))
+
+    res.render('samples/index', { resData });
 })
 
 // @desc    Show sample

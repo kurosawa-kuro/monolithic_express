@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const appRoot = require("app-root-path");
 const methodOverride = require("method-override");
+const paginate = require('express-paginate');
 
 const { errorHandler } = require('./middleware/errorMiddleware');
 
@@ -11,6 +12,8 @@ const app = express()
 
 const publicDir = path.join(__dirname, "./public")
 app.use(express.static(publicDir));
+
+app.use(paginate.middleware(10, 50));
 
 // view engine
 app.set("views", appRoot.resolve("app/views"));
