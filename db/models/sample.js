@@ -16,11 +16,11 @@ module.exports = (sequelize, DataTypes) => {
 
     static async existsByName(name) {
       // middlewareから呼び出してresで返す
-      const data = await this.findAll({
+      const data = await this.findOne({
         raw: true, where: { name }
       })
 
-      return data.length == 0 ? false : true
+      return data ? true : false
     }
 
     async aaa(id) {
