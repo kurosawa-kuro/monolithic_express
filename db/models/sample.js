@@ -14,7 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     static async checkDuplicatedData(name) {
-      const data = await this.findAll({ raw: true, where: { name } })
+      const data = await this.findAll({
+        raw: true, where: { name }
+      })
 
       return data.length == 0 ? true : false
     }
