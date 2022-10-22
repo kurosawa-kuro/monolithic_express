@@ -1,4 +1,5 @@
 'use strict';
+const { middleware } = require('express-paginate');
 const {
   Model
 } = require('sequelize');
@@ -14,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     static async checkDuplicatedData(name) {
+      // middlewareから呼び出してresで返す
       const data = await this.findAll({
         raw: true, where: { name }
       })
