@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     static async existsByName(name) {
       // middlewareから呼び出してresで返す
       const data = await this.findOne({
-        raw: true, where: { name }
+        raw: true,
+        where: { name }
       })
 
       return data ? true : false
