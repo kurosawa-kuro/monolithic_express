@@ -7,9 +7,9 @@ async function startSample() {
     // console.log({ Sample })
 
     // createAction()
-    readSamples()
+    // readSamples()
     // readSample2()
-    // readSample()
+    readSample()
     // searchSample()
     // updateAction()
     // deleteAction()
@@ -44,8 +44,8 @@ const createAction = async () => {
 const readSamples = async () => {
     console.log("start readSample")
     try {
-        const samples = await Sample.findAll()
-        console.log("sample", JSON.stringify(samples, null, 2))
+        const samples = await Sample.findAll({ raw: true })
+        // console.log("sample", JSON.stringify(samples, null, 2))
 
         const data = samples
         const msg = data.length !== 0 ? "Successfully read Samples" : "Successfully read Samples but empty"
@@ -61,13 +61,16 @@ const readSample = async () => {
     console.log("start readSample")
     try {
         const sample = await Sample.findByPk(1)
-        console.log("sample", JSON.stringify(sample, null, 2))
+        // console.log("sample", JSON.stringify(sample, null, 2))
 
-        const data = sample
-        const msg = data.length !== 0 ? "Successfully read Samples" : "Successfully read Samples but empty"
+        const res = await Sample.modelMethod(2)
+        console.log({ res })
 
-        // return res.status(200).json({ isSuccess: true, msg, data })
-        console.log({ isSuccess: true, msg, data })
+        // const data = sample
+        // const msg = data.length !== 0 ? "Successfully read Samples" : "Successfully read Samples but empty"
+
+        // // return res.status(200).json({ isSuccess: true, msg, data })
+        // console.log({ isSuccess: true, msg, data })
     } catch (error) {
         console.log({ isSuccess: false, error })
     }

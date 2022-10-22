@@ -13,6 +13,13 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
 
+    static async modelMethod(id) {
+      // define association here
+      console.log("modelMethod")
+      console.log("this", this)
+      return this.findByPk(id)
+    }
+
     async aaa(id) {
       const aaa = id + " aaa " + this.name
       return aaa
