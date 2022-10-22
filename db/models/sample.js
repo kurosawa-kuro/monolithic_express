@@ -14,13 +14,13 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
 
-    static async checkDuplicatedData(name) {
+    static async existsByName(name) {
       // middlewareから呼び出してresで返す
       const data = await this.findAll({
         raw: true, where: { name }
       })
 
-      return data.length == 0 ? true : false
+      return data.length == 0 ? false : true
     }
 
     async aaa(id) {
